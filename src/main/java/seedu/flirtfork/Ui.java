@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Handles all user interfaces for FlirtFork, providing methods to display messages,
@@ -436,6 +437,18 @@ public class Ui {
         dateFormat.setLenient(false);
         try {
             Date inputDate = dateFormat.parse(input);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(inputDate);
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1; // Calendar.MONTH is zero-based
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            if (!isDateInRange(day, month, year)) {
+                showMessage("The day and month entered do not correspond to a valid date.");
+                return false;
+            }
+
             Date currentDate = new Date();
             if (inputDate.after(currentDate)) {
                 showMessage("Do note that the date cannot be later than the current date!");
@@ -446,5 +459,32 @@ public class Ui {
             showMessage("Please enter a valid date in dd/mm/yyyy format.");
             return false;
         }
+    }
+
+    /**
+     * Checks if the given year, month, and day constitute a valid date.
+     *
+     * @param day   The day to be checked.
+     * @param month The month to be checked (1-12).
+     * @param year  The year to be checked.
+     * @return true if the date is valid, false otherwise.
+     */
+    public boolean isDateInRange(int day, int month, int year) {
+        if (month < 1 || month > 12) {
+            return false;
+        }
+
+        int[] daysInMonths = { 31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        return day >= 1 && day <= daysInMonths[month - 1];
+    }
+
+    /**
+     * Determines whether the given year is a leap year.
+     *
+     * @param year The year to be checked.
+     * @return true if the year is a leap year, false otherwise.
+     */
+    public boolean isLeapYear(int year) {
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
     }
 }
