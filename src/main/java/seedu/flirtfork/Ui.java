@@ -5,10 +5,13 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 /**
- * Handles all user interfaces for FlirtFork, providing methods to display messages,
- * read user commands, and show lists of options like food, activities, and gifts.
+ * Handles all user interfaces for FlirtFork, providing methods to display
+ * messages,
+ * read user commands, and show lists of options like food, activities, and
+ * gifts.
  */
 public class Ui {
     private static final String BOT_NAME = "Flirt and Fork";
@@ -16,14 +19,16 @@ public class Ui {
     private Scanner scanner;
 
     /**
-     * Constructs a Ui object with a new Scanner for reading user input from the console.
+     * Constructs a Ui object with a new Scanner for reading user input from the
+     * console.
      */
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
 
     /**
-     * Displays a greeting message to the user, optionally including the anniversary date if available.
+     * Displays a greeting message to the user, optionally including the anniversary
+     * date if available.
      *
      * @param anniversary The user's anniversary date or "N.A" if not provided.
      */
@@ -39,7 +44,8 @@ public class Ui {
     }
 
     /**
-     * Displays a first setup message to the user when starting the application for the first time.
+     * Displays a first setup message to the user when starting the application for
+     * the first time.
      */
     public void firstSetUpMessage() {
         System.out.println(HORIZONTAL);
@@ -50,7 +56,8 @@ public class Ui {
     }
 
     /**
-     * Displays an exit message to the user when they choose to terminate the application.
+     * Displays an exit message to the user when they choose to terminate the
+     * application.
      */
     public void exitMessage() {
         System.out.println("Love, like a good meal, is all about timing.\n" +
@@ -59,52 +66,53 @@ public class Ui {
     }
 
     /**
-     * Displays the help message with a list of available commands and their functions.
+     * Displays the help message with a list of available commands and their
+     * functions.
      */
     public void helpMessage() {
         System.out.println(
-            "----------------------------------------- \n" +
-            "| Command to type | Function of feature | \n" +
-            "----------------------------------------- \n" +
-            "1. list: Take a look at potential restaurants, activities, or gifts \n\n" +
-            "2. me: Let me know more about yourself \n\n" +
-            "3. idea: Generate a randomised date idea \n\n" +
-            "4. itinerary LOCATION, PRICE: Generate a suitable date itinerary based on your preferences \n\n" +
-            "5. smart: Generate a smart itinerary, based on your user profile \n\n" +
-            "6. gift: Generate a randomised gift idea \n\n" +
-            "7. food NAME_OF_EATERY, LOCATION, PRICE, CUISINE: Add a restaurant to your favourites \n\n" +
-            "8. activity NAME_OF_ACTIVITY, LOCATION, PRICE: Add an activity to your favourites \n\n" +
-            "9. favourites: List out all your favourites \n\n" +
-            "10. delete INDEX_OF_ENTRY: Delete an entry from your favourites \n\n" +
-            "11. find KEYWORD: Find an entry from your favourites, based off keyword \n\n" +
-            "12. history: List out all your past date locations and restaurants \n\n" +
-            "13. exit: Exit the program \n\n" +
+                "----------------------------------------- \n" +
+                        "| Command to type | Function of feature | \n" +
+                        "----------------------------------------- \n" +
+                        "1. list: Take a look at potential restaurants, activities, or gifts \n\n" +
+                        "2. me: Let me know more about yourself \n\n" +
+                        "3. idea: Generate a randomised date idea \n\n" +
+                        "4. itinerary LOCATION, PRICE: Generate suitable date itinerary based on your preferences \n\n"
+                        +
+                        "5. smart: Generate a smart itinerary, based on your user profile \n\n" +
+                        "6. gift: Generate a randomised gift idea \n\n" +
+                        "7. food NAME_OF_EATERY, LOCATION, PRICE, CUISINE: Add a restaurant to your favourites \n\n" +
+                        "8. activity NAME_OF_ACTIVITY, LOCATION, PRICE: Add an activity to your favourites \n\n" +
+                        "9. favourites: List out all your favourites \n\n" +
+                        "10. delete INDEX_OF_ENTRY: Delete an entry from your favourites \n\n" +
+                        "11. find KEYWORD: Find an entry from your favourites, based off keyword \n\n" +
+                        "12. history: List out all your past date locations and restaurants \n\n" +
+                        "13. exit: Exit the program \n\n" +
 
-            "LEGEND (prices):\n" +
-            "C: Cheap\n" +
-            "B: Budget\n" +
-            "A: Affordable\n" +
-            "P: Pricey\n" +
-            "S: Special Ocassions Only\n\n" +
+                        "LEGEND (prices):\n" +
+                        "C: Cheap\n" +
+                        "B: Budget\n" +
+                        "A: Affordable\n" +
+                        "P: Pricey\n" +
+                        "S: Special Ocassions Only\n\n" +
 
-            "LEGEND (cuisines):\n" +
-            "W: Western\n" +
-            "F: Fusion\n" +
-            "J: Japanese\n" +
-            "C: Chinese\n" +
-            "T: Thai\n" +
-            "K: Korean\n" +
-            "I: Italian\n" +
-            "S: Spanish\n\n" +
+                        "LEGEND (cuisines):\n" +
+                        "W: Western\n" +
+                        "F: Fusion\n" +
+                        "J: Japanese\n" +
+                        "C: Chinese\n" +
+                        "T: Thai\n" +
+                        "K: Korean\n" +
+                        "I: Italian\n" +
+                        "S: Spanish\n\n" +
 
-            "LEGEND (locations):\n" +
-            "E: East\n" +
-            "W: West\n" +
-            "C: Central\n" +
-            "S: South\n" +
-            "NE: NorthEast\n" +
-            "ACC: Accessible (found in multiple places around SG)"
-        );
+                        "LEGEND (locations):\n" +
+                        "E: East\n" +
+                        "W: West\n" +
+                        "C: Central\n" +
+                        "S: South\n" +
+                        "NE: NorthEast\n" +
+                        "ACC: Accessible (found in multiple places around SG)");
     }
 
     /**
@@ -145,11 +153,13 @@ public class Ui {
     }
 
     /**
-     * Displays the search results for user's favourite items based on the given keyword.
+     * Displays the search results for user's favourite items based on the given
+     * keyword.
      * If matches are found, it lists all the matching favourites.
      * Otherwise, it prompts the user to try another search term.
      *
-     * @param matchingFavourites A list of Favourites entries that match the search keyword.
+     * @param matchingFavourites A list of Favourites entries that match the search
+     *                           keyword.
      */
     public void showMatchingFavourites(ArrayList<Favourites> matchingFavourites) {
         if (matchingFavourites.isEmpty()) {
@@ -185,7 +195,8 @@ public class Ui {
      * If matches are found, it lists all the matching activities.
      * Otherwise, it prompts the user to try another search term.
      *
-     * @param matchingActivities A list of Activity entries that match the search keyword.
+     * @param matchingActivities A list of Activity entries that match the search
+     *                           keyword.
      */
     public void showMatchingActivities(ArrayList<Activity> matchingActivities) {
         if (matchingActivities.isEmpty()) {
@@ -221,15 +232,16 @@ public class Ui {
     }
 
     public static void listActivities() {
-        System.out.println("What are some activities you can do as a couple? Let's see.." );
+        System.out.println("What are some activities you can do as a couple? Let's see..");
     }
 
     public static void listGifts() {
-        System.out.println("Peek into Cupid's own gift collection!" );
+        System.out.println("Peek into Cupid's own gift collection!");
     }
 
     /**
-     * Displays the list command menu to the user, providing options for listing foods,
+     * Displays the list command menu to the user, providing options for listing
+     * foods,
      * activities, and gifts, or cancelling the command.
      */
     public static void listCommand() {
@@ -243,7 +255,7 @@ public class Ui {
         System.out.println(HORIZONTAL);
     }
 
-    public static void findCommand(){
+    public static void findCommand() {
         System.out.println("What are you searching for in this enchanting realm?");
         System.out.println("Choose from the following options:");
         System.out.println("1. What delicious food are you craving for today? (type 'food')");
@@ -315,7 +327,8 @@ public class Ui {
     }
 
     /**
-     * Reads and validates the user's name input, ensuring it's not empty and doesn't contain numbers.
+     * Reads and validates the user's name input, ensuring it's not empty and
+     * doesn't contain numbers.
      *
      * @return The user's validated name input as a String.
      */
@@ -335,14 +348,15 @@ public class Ui {
     /**
      * Reads and validates the user's cuisine preference input.
      *
-     * @return The user's validated cuisine preference input (W, F, J, C, T, K, I, or S).
+     * @return The user's validated cuisine preference input (W, F, J, C, T, K, I,
+     *         or S).
      */
     public String readUserCuisine() {
         String input = readCommand();
         boolean isValid;
 
         isValid = input.equals("W") || input.equals("F") || input.equals("J") || input.equals("C")
-                || input.equals("T") ||input.equals("K") || input.equals("I") || input.equals("S");
+                || input.equals("T") || input.equals("K") || input.equals("I") || input.equals("S");
 
         while (!isValid) {
             showMessage("Please enter your preferences in this format.\n");
@@ -356,7 +370,7 @@ public class Ui {
             showMessage("S: Spanish");
             input = readCommand();
             isValid = input.equals("W") || input.equals("F") || input.equals("J") || input.equals("C")
-                    || input.equals("T") ||input.equals("K") || input.equals("I") || input.equals("S");
+                    || input.equals("T") || input.equals("K") || input.equals("I") || input.equals("S");
         }
         return input;
     }
@@ -371,9 +385,9 @@ public class Ui {
         boolean isValid;
 
         isValid = input.equals("M") || input.equals("R") || input.equals("F")
-                || input.equals("D") || input.equals("S") ||input.equals("X");
+                || input.equals("D") || input.equals("S") || input.equals("X");
 
-        while(!isValid) {
+        while (!isValid) {
             showMessage("Please enter your status in this format.\n");
             showMessage("Enter 'M' if you are Married");
             showMessage("Enter 'R' if you are in a serious relationship");
@@ -383,7 +397,7 @@ public class Ui {
             showMessage("Enter 'X' if you are single and only looking to hangout with friends");
             input = readCommand();
             isValid = input.equals("M") || input.equals("R") || input.equals("F")
-                    || input.equals("D") || input.equals("S") ||input.equals("X");
+                    || input.equals("D") || input.equals("S") || input.equals("X");
         }
         return input;
     }
@@ -399,7 +413,7 @@ public class Ui {
 
         isValid = input.equals("Male") || input.equals("Female") || input.equals("Other");
 
-        while(!isValid) {
+        while (!isValid) {
             showMessage("Please enter your gender in this format strictly. Please adhere to the capitalisation\n");
             showMessage("'Male' if you are a male");
             showMessage("'Female' if you are a female");
@@ -426,7 +440,8 @@ public class Ui {
     }
 
     /**
-     * Checks if the given input string represents a valid date in the format 'dd/mm/yyyy'.
+     * Checks if the given input string represents a valid date in the format
+     * 'dd/mm/yyyy'.
      *
      * @param input The input string to be validated as a date.
      * @return true if the input string represents a valid date, false otherwise.
@@ -436,6 +451,18 @@ public class Ui {
         dateFormat.setLenient(false);
         try {
             Date inputDate = dateFormat.parse(input);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(inputDate);
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1; // Calendar.MONTH is zero-based
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            if (!isDateInRange(day, month, year)) {
+                showMessage("The day and month entered do not correspond to a valid date.");
+                return false;
+            }
+
             Date currentDate = new Date();
             if (inputDate.after(currentDate)) {
                 showMessage("Do note that the date cannot be later than the current date!");
@@ -446,5 +473,32 @@ public class Ui {
             showMessage("Please enter a valid date in dd/mm/yyyy format.");
             return false;
         }
+    }
+
+    /**
+     * Checks if the given year, month, and day constitute a valid date.
+     *
+     * @param day   The day to be checked.
+     * @param month The month to be checked (1-12).
+     * @param year  The year to be checked.
+     * @return true if the date is valid, false otherwise.
+     */
+    public boolean isDateInRange(int day, int month, int year) {
+        if (month < 1 || month > 12) {
+            return false;
+        }
+
+        int[] daysInMonths = { 31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        return day >= 1 && day <= daysInMonths[month - 1];
+    }
+
+    /**
+     * Determines whether the given year is a leap year.
+     *
+     * @param year The year to be checked.
+     * @return true if the year is a leap year, false otherwise.
+     */
+    public boolean isLeapYear(int year) {
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
     }
 }
